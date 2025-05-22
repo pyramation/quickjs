@@ -27635,6 +27635,14 @@ static __exception int js_parse_statement_or_decl(JSParseState *s,
 
     case TOK_ENUM:
     case TOK_EXPORT:
+        if (s->cur_func->module) {
+            if (js_parse_export(s))
+                return -1;
+        } else {
+            js_unsupported_keyword(s, s->token.u.ident.atom);
+            goto fail;
+        }
+        break;
     case TOK_EXTENDS:
         js_unsupported_keyword(s, s->token.u.ident.atom);
         goto fail;
