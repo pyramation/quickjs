@@ -26508,6 +26508,7 @@ static void emit_return(JSParseState *s, bool hasval)
 
 static __exception int js_parse_statement_or_decl(JSParseState *s,
                                                   int decl_mask);
+static __exception int js_parse_export(JSParseState *s);
 
 static __exception int js_parse_statement(JSParseState *s)
 {
